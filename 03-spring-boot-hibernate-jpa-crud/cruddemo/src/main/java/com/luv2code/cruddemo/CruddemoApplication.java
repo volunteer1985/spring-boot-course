@@ -20,17 +20,25 @@ public class CruddemoApplication {
 	CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 			return runner -> {
 				//createStudent(studentDAO);
+				createMultipleStudents(studentDAO);
 				//findStudentById(studentDAO);
 				//findAllStudents(studentDAO);
 				//findStudentByLastName(studentDAO);
 				//updateStudentById(studentDAO);
-				deleteStudentById(studentDAO);
+				//deleteStudentById(studentDAO);
+				//deleteAllStudents(studentDAO);
 
 			};
 	}
 
+	private void deleteAllStudents(StudentDAO studentDAO) {
+		System.out.println("Deleting all students...");
+		int numberOfDeletedStudents = studentDAO.deleteAll();
+		System.out.println("Deleted rows count = " + numberOfDeletedStudents);
+	}
+
 	private void deleteStudentById(StudentDAO studentDAO) {
-		int studentId = 3;
+		int studentId = 1;
 		System.out.println("Looking for student with id = " + studentId + "...");
 		System.out.println("Deleting the student...");
 		studentDAO.delete(studentId);
@@ -72,6 +80,19 @@ public class CruddemoApplication {
 		Student myStudent = studentDAO.findById(myStudentId);
 		System.out.println("Retrieving student created student " + myStudent);
 
+	}
+	private void createMultipleStudents(StudentDAO studentDAO) {
+		System.out.println("Creating 3 students objects ...");
+		Student tempStudent1 = new Student("Vovk", "Vovkiv", "vovk@someserv.com");
+		Student tempStudent2 = new Student("Vedmid", "Vedmediv", "vedmid@someserv.com");
+		Student tempStudent3 = new Student("Lys", "Lysiv", "lys@someserv.com");
+
+		System.out.println("Saving 3 students into database ...");
+		studentDAO.save(tempStudent1);
+		studentDAO.save(tempStudent2);
+		studentDAO.save(tempStudent3);
+
+		System.out.printf("3 students successfully saved with id: %d, %d, %d", tempStudent1.getId(), tempStudent2.getId(), tempStudent3.getId()).println();
 	}
 
 	private void createStudent(StudentDAO studentDAO) {
