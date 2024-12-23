@@ -28,6 +28,7 @@ public class StudentController {
         //add countries list to the model
         theModel.addAttribute("countries", countries);
 
+
         return "student-form";
     }
 
@@ -37,6 +38,7 @@ public class StudentController {
         //logging student
         System.out.println( "Student " + theStudent.getFirstName() + " " + theStudent.getLastName());
         System.out.println("Country: " + theStudent.getCountry());
+        System.out.println("Favorite programming Language: " + theStudent.getFavoriteLanguage());
 
         return "student-confirmation";
     }
