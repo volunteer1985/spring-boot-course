@@ -1,4 +1,4 @@
-<html xml:lang="en" xmlns:th="http://www.thymelef.orq" xmlns="http://www.w3.org/1999/html">
+<html xml:lang="en" xmlns:th="http://www.thymelef.orq">
 <head>
     <meta charset="UTF-8">
     <title>Student Registration Form</title>
@@ -19,6 +19,13 @@ Country: <select th:field="*{country}">
     <input type="radio" th:field="*{favoriteLanguage}" th:each="tempLanguage : ${languages}" th:value="${tempLanguage}" th:text="${tempLanguage}"/>
 
     <br><br>
+
+    Favorite Operating Systems:
+    <input type="checkbox" th:each="tempSystem : ${systems}" th:field="*{favoriteSystems}" th:value="${tempSystem}" th:text="${tempSystem}"/>
+
+
+    <br><br>
+
     <input type="submit" value="Submit">
 
 

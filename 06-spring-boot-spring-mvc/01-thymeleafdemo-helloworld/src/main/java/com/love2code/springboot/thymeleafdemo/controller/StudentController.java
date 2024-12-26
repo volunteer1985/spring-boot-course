@@ -19,6 +19,9 @@ public class StudentController {
     @Value("${languages}")
     private List<String> favoriteLanguages;
 
+    @Value("${systems}")
+    private List<String> favoriteSystems;
+
     @GetMapping("/showStudentForm")
     public String showStudentForm(Model theModel){
 
@@ -33,6 +36,8 @@ public class StudentController {
 
         theModel.addAttribute("languages", favoriteLanguages);
 
+        theModel.addAttribute("systems", favoriteSystems);
+
 
         return "student-form";
     }
@@ -43,7 +48,8 @@ public class StudentController {
         //logging student
         System.out.println( "Student " + theStudent.getFirstName() + " " + theStudent.getLastName());
         System.out.println("Country: " + theStudent.getCountry());
-        System.out.println("Favorite programming Language: " + theStudent.getFavoriteLanguage());
+        System.out.println("Favorite Programming Language: " + theStudent.getFavoriteLanguage());
+        System.out.println("Favorite Operating Systems: " + theStudent.getFavoriteSystems());
 
         return "student-confirmation";
     }
