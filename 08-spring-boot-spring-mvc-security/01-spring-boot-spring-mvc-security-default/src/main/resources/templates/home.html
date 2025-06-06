@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Chornobajivka Company Home Page</title>
 </head>
-<body>
-<h2>Chornobajivka Company Home Page</h2>
+    <body>
+        <h2>Chornobajivka Company Home Page</h2>
+        <hr>
+        <p>
+            Welcome to Chornobajivka Company home page
+        </p>
+        <form action="#" th:action="@{/logout}" method="POST">
+            <input type="submit" value="Logout"/>
 
-</body>
+        </form>
+    </body>
 </html>
