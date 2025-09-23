@@ -17,15 +17,18 @@
             <br><br>
             Role(s): <span sec:authentication="principal.authorities"></span>
         </p>
-        <hr>
-        <!--Add a link for leaders-->
-        <p>
-            <a th:href="@{/leaders}">Leadership Meeting</a> (Only for manager peeps)
-        </p>
-        <!--Add a link for systems-->
-        <p>
-            <a th:href="@{/systems}">Leadership Meeting</a> (Only for manager peeps)
-        </p>
+       <div sec:authorize="hasRole('MANAGER')">
+            <!--Add a link for leaders-->
+            <p>
+                <a th:href="@{/leaders}">Leadership Meeting</a> (Only for manager peeps)
+            </p>
+       </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            <!--Add a link for systems-->
+            <p>
+                <a th:href="@{/systems}">Leadership Meeting</a> (Only for manager peeps)
+            </p>
+        </div>
         <hr>
         <form action="#" th:action="@{/logout}" method="POST">
             <input type="submit" value="Logout"/>
